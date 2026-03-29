@@ -19,7 +19,7 @@ function showNotification(message, type = 'info') {
   }, 4000);
 }
 
-
+ 
 // DOM ELEMENTS
 
 const taskList = document.getElementById("taskList");
