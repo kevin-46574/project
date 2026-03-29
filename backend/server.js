@@ -138,5 +138,5 @@ app.delete("/api/tasks/:id", async (req, res) => {
 // START SERVER
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(` Server running on port ${PORT}`);
 });
