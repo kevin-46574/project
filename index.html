@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexdo - Smart ToDo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background Glow Effects -->
+  <div class="bg-blur blur1"></div>
+  <div class="bg-blur blur2"></div>
+  <div class="bg-blur blur3"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="glass header">
+      <div>
+        <h1>✨ Nexdo</h1>
+        <p>Plan Smart. Do Next.</p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle">🌙</button>
+      </div>
+    </header>
+
+    <!-- Dashboard / Stats -->
+    <section class="dashboard">
+      <div class="stat-card glass">
+        <h3 id="totalTasks">0</h3>
+        <p>Total Tasks</p>
+      </div>
+      <div class="stat-card glass">
+        <h3 id="completedTasks">0</h3>
+        <p>Completed</p>
+      </div>
+      <div class="stat-card glass">
+        <h3 id="pendingTasks">0</h3>
+        <p>Pending</p>
+      </div>
+      <div class="stat-card glass">
+        <h3 id="overdueTasks">0</h3>
+        <p>Overdue</p>
+      </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <section class="progress-section glass">
+      <div class="progress-top">
+        <span>Daily Progress</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+    </section>
+
+    <!-- Task Form -->
+    <section class="todo-form glass">
+      <h2>Add New Task</h2>
+
+      <input type="text" id="title" placeholder="Enter task title..." />
+      <textarea id="description" placeholder="Task description..."></textarea>
+
+      <div class="row">
+        <select id="priority">
+          <option value="Low">🟢 Low Priority</option>
+          <option value="Medium">🟡 Medium Priority</option>
+          <option value="High">🔴 High Priority</option>
+        </select>
+
+        <input type="date" id="due_date" />
+      </div>
+
+      <div class="row">
+        <select id="category">
+          <option value="Study">📚 Study</option>
+          <option value="Personal">🧍 Personal</option>
+          <option value="Work">💼 Work</option>
+          <option value="Project">🚀 Project</option>
+        </select>
+
+        <select id="status">
+          <option value="active">🟠 Active</option>
+          <option value="completed">✅ Completed</option>
+        </select>
+      </div>
+
+      <button id="addTaskBtn">+ Add Task</button>
+    </section>
+
+    <!-- Search + Filter + Sort -->
+    <section class="controls glass">
+      <input type="text" id="searchInput" placeholder="🔍 Search tasks..." />
+
+      <div class="control-row">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+          <button class="filter-btn" data-filter="overdue">Overdue</button>
+        </div>
+
+        <select id="sortTasks">
+          <option value="newest">Sort: Newest</option>
+          <option value="oldest">Sort: Oldest</option>
+          <option value="priorityHigh">Priority: High → Low</option>
+          <option value="priorityLow">Priority: Low → High</option>
+          <option value="dueSoon">Due Date: Soonest</option>
+          <option value="dueLate">Due Date: Latest</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Task List -->
+    <section id="taskList" class="task-list"></section>
+
+    <!-- Empty State -->
+    <section id="emptyState" class="empty-state glass">
+      <h2>🎯 No tasks yet</h2>
+      <p>Add your first task and start leveling up your productivity.</p>
+    </section>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="deleteModal" class="modal hidden">
+    <div class="modal-content glass">
+      <h2>Delete Task?</h2>
+      <p>Are you sure you want to delete this task? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="cancelDelete">Cancel</button>
+        <button id="confirmDelete" class="danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-content glass">
+      <h2>Edit Task</h2>
+
+      <input type="text" id="editTitle" placeholder="Edit task title..." />
+      <textarea id="editDescription" placeholder="Edit description..."></textarea>
+
+      <div class="row">
+        <select id="editPriority">
+          <option value="Low">🟢 Low Priority</option>
+          <option value="Medium">🟡 Medium Priority</option>
+          <option value="High">🔴 High Priority</option>
+        </select>
+
+        <input type="date" id="editDueDate" />
+      </div>
+
+      <div class="row">
+        <select id="editCategory">
+          <option value="Study">📚 Study</option>
+          <option value="Personal">🧍 Personal</option>
+          <option value="Work">💼 Work</option>
+          <option value="Project">🚀 Project</option>
+        </select>
+
+        <select id="editStatus">
+          <option value="active">🟠 Active</option>
+          <option value="completed">✅ Completed</option>
+        </select>
+      </div>
+
+      <div class="modal-actions">
+        <button id="cancelEdit">Cancel</button>
+        <button id="saveEdit">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
